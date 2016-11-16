@@ -48,4 +48,14 @@ class FileDb::TableTest < Minitest::Test
 
     assert_equal(@movies.select(where: attributes).count, 1)
   end
+
+  def test_insert_record_with_incremental_id
+    expected_id = @movies.select(where: {}).map { |r| r[:id] }.max
+
+    attributes = { title: 'Lol', year: 1964, director_id: 2 }
+
+    @movies.insert(attributes)
+
+    assert_equal(@movies.select(where: attributes).first[:id], expected_id)
+  end
 end
