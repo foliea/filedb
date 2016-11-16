@@ -6,12 +6,12 @@ module FileDb
     end
 
     def insert(object)
-      @internal << object.merge(id: get_id_and_increment))
+      @internal << object.merge(id: next_id))
     end
 
     private
 
-    def get_id_and_increment
+    def next_id
       @max_id ||= @internal.map { |e| e.id }.sort { |a, b| b <=> a }.first
       @max_id = @max_id + 1
     end
