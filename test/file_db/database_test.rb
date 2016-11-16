@@ -12,4 +12,8 @@ class FileDb::DatabaseTest < Minitest::Test
   def test_table_names_returns_table_name
     assert_equal(['directors', 'movies'], @db.table_names)
   end
+
+  def test_table_names_returns_table
+    assert_equal(@db.table('movies').class, FileDb::Table)
+  end
 end
