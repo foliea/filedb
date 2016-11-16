@@ -50,7 +50,7 @@ class FileDb::TableTest < Minitest::Test
   end
 
   def test_insert_record_with_incremental_id
-    expected_id = @movies.select(where: {}).map { |r| r[:id] }.max
+    expected_id = @movies.select(where: {}).map { |r| r[:id] }.max + 1
 
     attributes = { title: 'Lol', year: 1964, director_id: 2 }
 
