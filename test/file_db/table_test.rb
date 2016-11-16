@@ -29,7 +29,7 @@ class FileDb::TableTest < Minitest::Test
 
     @movies.delete(search)
 
-    assert_equal(@movie.select(search), [])
+    assert_equal(@movies.select(search), [])
   end
 
   def test_update_with_values
@@ -38,7 +38,7 @@ class FileDb::TableTest < Minitest::Test
 
     @movies.update(where: search, values: values)
 
-    assert_equal(@movie.select(where: search.merge(values)).count, 1)
+    assert_equal(@movies.select(where: search.merge(values)).count, 1)
   end
 
   def test_insert_record_with_attributes
@@ -46,6 +46,6 @@ class FileDb::TableTest < Minitest::Test
 
     @movies.insert(attributes)
 
-    assert_equal(@movie.select(where: attributes).count, 1)
+    assert_equal(@movies.select(where: attributes).count, 1)
   end
 end
