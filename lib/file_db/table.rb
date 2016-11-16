@@ -5,12 +5,16 @@ module FileDb
       @rows = rows.map { |row| symbolize_hash(row) }
     end
 
-    def select(where:)
+    def select(where: {})
       @rows.select { |row| row.values_at(*where.keys) == where.values }
     end
 
     def insert(row)
       @rows << symbolize_hash(row.merge(id: next_id))
+    end
+
+    def delete(where: {})
+      @rows -= select(where: where)
     end
 
     private

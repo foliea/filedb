@@ -21,7 +21,7 @@ class FileDb::TableTest < Minitest::Test
 
     @movies.delete(search)
 
-    assert_equal(@movie.select(search), [])
+    assert_equal(@movies.select(search), [])
   end
 
   def test_delete_with_year
@@ -50,7 +50,7 @@ class FileDb::TableTest < Minitest::Test
   end
 
   def test_insert_record_with_incremental_id
-    expected_id = @movies.select(where: {}).map { |r| r[:id] }.max + 1
+    expected_id = @movies.select.map { |r| r[:id] }.max + 1
 
     attributes = { title: 'Lol', year: 1964, director_id: 2 }
 
