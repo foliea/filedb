@@ -13,6 +13,12 @@ module FileDb
       @rows << symbolize_hash(row.merge(id: next_id))
     end
 
+    def update(where: {}, values: {})
+      select(where: where).each do |row|
+        row.merge!(values)
+      end
+    end
+
     def delete(where: {})
       @rows -= select(where: where)
     end
