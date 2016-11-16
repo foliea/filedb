@@ -16,7 +16,7 @@ module FileDb
     private
 
     def next_id
-      @max_id ||= @rows.map { |e| e[:id] }.sort { |a, b| b <=> a }.first
+      @max_id ||= @rows.map { |e| e[:id] }.max
       @max_id = @max_id + 1
     end
 
