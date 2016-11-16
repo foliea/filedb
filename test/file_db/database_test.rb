@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'pry'
 
 class FileDb::DatabaseTest < Minitest::Test
   def setup
