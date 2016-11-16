@@ -10,7 +10,7 @@ module FileDb
     end
 
     def insert(row)
-      @rows << row.merge(id: next_id)
+      @rows << symbolize_hash(row.merge(id: next_id))
     end
 
     private
